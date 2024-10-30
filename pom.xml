@@ -1,0 +1,156 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.github.i-nahornyi</groupId>
+    <artifactId>gatling-dummy-sampler</artifactId>
+    <version>0.0.1</version>
+    <packaging>jar</packaging>
+
+    <name>gatling-dummy-sampler</name>
+    <description>
+        A simple Gatling plugin for UI performance testing using Playwright.
+    </description>
+    <url>https://github.com/i-nahornyi/gatling-dummy-sampler</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>i-nahornyi</id>
+            <name>Ivan Nahornyi</name>
+            <email>ivan.nahornyi.93@gmail.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/i-nahornyi/gatling-dummy-sampler.git</connection>
+        <developerConnection>scm:git:git@github.com:/i-nahornyi/gatling-dummy-sampler.git</developerConnection>
+        <url>>https://github.com/i-nahornyi/gatling-dummy-sampler</url>
+    </scm>
+
+    <properties>
+        <maven.compiler.release>11</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <gatling.version>3.12.0</gatling.version>
+        <playwright.version>1.46.0</playwright.version>
+        <gatling-maven-plugin.version>4.9.6</gatling-maven-plugin.version>
+        <scala-maven-plugin.version>4.8.1</scala-maven-plugin.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+        <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
+        <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.gatling</groupId>
+            <artifactId>gatling-core</artifactId>
+            <version>${gatling.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.gatling</groupId>
+            <artifactId>gatling-core-java</artifactId>
+            <version>${gatling.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.gatling.highcharts</groupId>
+            <artifactId>gatling-charts-highcharts</artifactId>
+            <version>${gatling.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <!--   Artifactory plugins        -->
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.5.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>ossrh</publishingServerId>
+                    <autoPublish>false</autoPublish>
+                    <waitForPublishCompletion>false</waitForPublishCompletion>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>io.gatling</groupId>
+                <artifactId>gatling-maven-plugin</artifactId>
+                <version>${gatling-maven-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>${scala-maven-plugin.version}</version>
+                <configuration>
+                    <scalaVersion>2.13.14</scalaVersion>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>testCompile</goal>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <jvmArgs>
+                                <jvmArg>-Xss100M</jvmArg>
+                            </jvmArgs>
+                            <args>
+                                <arg>-deprecation</arg>
+                                <arg>-feature</arg>
+                                <arg>-unchecked</arg>
+                                <arg>-language:implicitConversions</arg>
+                                <arg>-language:postfixOps</arg>
+                            </args>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
