@@ -5,12 +5,12 @@
 
     <groupId>io.github.i-nahornyi</groupId>
     <artifactId>gatling-dummy-sampler</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <packaging>jar</packaging>
 
     <name>gatling-dummy-sampler</name>
     <description>
-        A simple Gatling plugin for UI performance testing using Playwright.
+        A simple Gatling plugin for simulating realistic actions without making actual requests.
     </description>
     <url>https://github.com/i-nahornyi/gatling-dummy-sampler</url>
 
