@@ -1,6 +1,6 @@
 # Gatling Dummy Sampler
 
-The **Gatling Dummy Sampler** is a plugin for simulating realistic actions without making actual requests. It is especially useful when:
+The **gatling-dummy-sampler** is a plugin for simulating realistic actions without making actual requests. It is especially useful when:
 
 - The request involves a cost.
 - The response times are already known or predictable.

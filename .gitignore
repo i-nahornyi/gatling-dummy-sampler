@@ -2,7 +2,9 @@
 target
 results
 
-/.mvn/wrapper/*.jar
+/.mvn/
+/mvnw
+/mvnw.cmd
 
 #For building dependency
 buildCommand.txt
