@@ -1,5 +1,7 @@
 # Gatling Dummy Sampler
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.i-nahornyi/gatling-dummy-sampler)](https://central.sonatype.com/artifact/io.github.i-nahornyi/gatling-dummy-sampler)
+
 The **gatling-dummy-sampler** is a plugin for simulating realistic actions without making actual requests. It is especially useful when:
 
 - The request involves a cost.
