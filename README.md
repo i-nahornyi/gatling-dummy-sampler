@@ -3,9 +3,13 @@
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.i-nahornyi/gatling-dummy-sampler)](https://central.sonatype.com/artifact/io.github.i-nahornyi/gatling-dummy-sampler)
 
 The **gatling-dummy-sampler** is a plugin for simulating realistic actions without making actual requests. It is especially useful when:
-
 - The request involves a cost.
 - The response times are already known or predictable.
+
+> **Compatibility Notice**  
+> Since [**Gatling 3.13.3**](https://docs.gatling.io/concepts/scenario/#dummy), Gatling implemented a similar feature.  
+> This plugin only serves as a **workaround for Gatling 3.12.0**.
+
 
 ## Use Case
 Imagine a scenario where you are testing an integration with a third-party API. 
